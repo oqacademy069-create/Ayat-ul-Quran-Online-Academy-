@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ayat-ul-Quran Online Academy</title>
+<meta name="description" content="Ayat-ul-Quran Online Academy — Learn Quran with Tajweed, Hifz, Tafseer and Arabic from expert tutors. Flexible timings and one-on-one classes."/>
+<style>
+  :root{
+    --brand:#0e7a57;
+    --brand-2:#0b5f45;
+    --accent:#f4b400;
+    --text:#0f172a;
+    --muted:#64748b;
+    --card:#ffffff;
+    --bg:#ffffff;
+    --ring:#dbeafe;
+    --shadow: 0 10px 25px rgba(2,6,23,0.08);
+    --radius:22px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family: ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial}
+  img{max-width:100%;height:auto}
+  a{text-decoration:none;color:inherit}
+  .container{max-width:1200px;margin:0 auto;padding:0 18px}
+  /* NAV */
+  .nav{
+    position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);
+    border-bottom:1px solid #e5e7eb;
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800}
+  .logo-badge{
+    width:40px;height:40px;border-radius:12px;display:grid;place-items:center;
+    background:conic-gradient(from 210deg at 50% 50%, #e8fff7, #d7ffef, #f0fff8);
+    border:1px solid #d1fae5; box-shadow: var(--shadow);
+  }
+  .logo svg{width:22px;height:22px}
+  .nav-links{display:flex;gap:14px;flex-wrap:wrap}
+  .link{
+    padding:9px 14px;border:2px solid transparent;border-radius:999px;
+    transition:.25s; font-weight:600; color:#0f172a;
+  }
+  .link:hover{border-color:#e5e7eb;transform:translateY(-1px)}
+  /* HERO (white bg, premium top) */
+  .hero{
+    position:relative;overflow:hidden;background:var(--bg);
+    padding:56px 0 28px;
+  }
+  /* geometric top ornament */
+  .hero::before{
+    content:""; position:absolute; inset:-120px -40px auto -40px; height:360px;
+    background:
+      radial-gradient(1200px 280px at 50% -40px, rgba(14,122,87,.12), transparent 60%),
+      linear-gradient(180deg, #ffffff 0%, #f8fafc 85%, #ffffff 100%);
+    z-index:-1;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:center}
+  @media (max-width:900px){.hero-grid{grid-template-columns:1fr}}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1.5px dashed #d1fae5;
+    border-radius:999px;background:#f0fdf4;color:var(--brand-2);font-weight:700;font-size:12px;letter-spacing:.3px;
+  }
+  .hero h1{font-size:clamp(28px,5vw,44px);line-height:1.12;margin:14px 0 10px;font-weight:900}
+  .hero p{color:var(--muted);font-size:clamp(14px,2.4vw,18px)}
+  .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+  .btn{
+    --b:2px;position:relative;display:inline-flex;align-items:center;gap:10px;
+    padding:12px 18px;border-radius:999px;font-weight:800;cursor:pointer;transition:.25s;
+    outline: none; user-select:none;
+  }
+  .btn:active{transform:scale(.98)}
+  .btn-primary{
+    color:var(--brand); background:#ffffff;border:var(--b) solid var(--brand);
+    box-shadow:0 8px 20px rgba(14,122,87,.12);
+  }
+  .btn-primary:hover{background:linear-gradient(180deg,#ffffff, #f7fee7)}
+  .btn-outline{
+    color:#111827;background:transparent;border:var(--b) dashed #CBD5E1;
+  }
+  .btn-outline:hover{border-style:solid}
+  .btn svg{width:18px;height:18px}
+  /* Cards */
+  .section{padding:42px 0}
+  .section h2{font-size:clamp(22px,3.6vw,32px);margin:0 0 10px}
+  .muted{color:var(--muted)}
+  .grid{display:grid;gap:16px}
+  .grid-3{grid-template-columns:repeat(3,1fr)}
+  .grid-2{grid-template-columns:repeat(2,1fr)}
+  @media (max-width:900px){.grid-3,.grid-2{grid-template-columns:1fr}}
+  .card{
+    background:var(--card); border:1px solid #eef2f7; border-radius:var(--radius); padding:18px;
+    box-shadow: var(--shadow); transition:.25s; position:relative; overflow:hidden;
+  }
+  .card:hover{transform:translateY(-4px)}
+  .chip{display:inline-flex;align-items:center;gap:8px;font-size:12px;padding:6px 10px;border-radius:999px;background:#f1f5f9;border:1px solid #e2e8f0}
+  .tick{color:var(--brand);font-weight:900}
+  .price{font-weight:900;font-size:24px}
+  /* FAQ */
+  details{border:1px solid #e5e7eb;border-radius:14px;padding:14px;background:#fff}
+  summary{font-weight:800;cursor:pointer;list-style:none}
+  summary::-webkit-details-marker{display:none}
+  details[open]{box-shadow:var(--shadow)}
+  /* Contact */
+  .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media (max-width:900px){.contact-wrap{grid-template-columns:1fr}}
+  .input{width:100%;padding:12px 14px;border:1.8px solid #e2e8f0;border-radius:12px;font-size:15px;outline:none;transition:.2s}
+  .input:focus{border-color:#cbd5e1; box-shadow:0 0 0 6px var(--ring)}
+  textarea.input{min-height:120px;resize:vertical}
+  .contact-actions{display:flex;gap:10px;flex-wrap:wrap}
+  .contact-links{display:flex;gap:10px;flex-wrap:wrap}
+  .info-item{display:flex;align-items:center;gap:10px}
+  /* Scroll reveal */
+  .reveal{opacity:0;transform:translateY(14px);transition: all .6s}
+  .reveal.show{opacity:1;transform:none}
+  /* Floating WhatsApp */
+  .float-wa{
+    position:fixed;right:16px;bottom:16px;z-index:60;display:flex;align-items:center;gap:10px;
+    background:#25D366;color:white;border-radius:999px;padding:12px 14px;box-shadow:0 16px 30px rgba(37,211,102,.35);
+    font-weight:900
+  }
+  .float-wa svg{width:20px;height:20px}
+  .float-wa:hover{filter:brightness(1.06)}
+  /* footer */
+  footer{border-top:1px solid #e5e7eb;background:#fff}
+  .footer-inner{display:grid;gap:14px;padding:20px 0;color:#475569}
+  .foot-mini{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:space-between}
+  .small{font-size:12px;color:#94a3b8}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="container nav-inner">
+    <div class="logo">
+      <span class="logo-badge" aria-hidden="true">
+        <!-- Crescent + Book SVG -->
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M14.5 3.5a8.5 8.5 0 1 0 6 14.7A7.5 7.5 0 0 1 14.5 3.5Z" fill="#0e7a57"/>
+          <path d="M7 9.5c0-.7.6-1.2 1.2-1l3.8 1.3c.6.2.6 1.1 0 1.3L8.2 12.4c-.6.2-1.2-.3-1.2-1V9.5Z" fill="#0b5f45"/>
+          <rect x="5.5" y="8" width="1.6" height="6.2" rx=".8" fill="#0e7a57"/>
+        </svg>
+      </span>
+      <span>Ayat-ul-Quran <span style="color:var(--brand)">Online Academy</span></span>
+    </div>
+    <nav class="nav-links">
+      <a class="link" href="#about">About</a>
+      <a class="link" href="#courses">Courses</a>
+      <a class="link" href="#why">Why Us</a>
+      <a class="link" href="#faq">FAQ</a>
+      <a class="link" href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-grid reveal">
+    <div>
+      <span class="eyebrow">Quran · Tajweed · Hifz · Tafseer</span>
+      <h1>Learn Quran online with certified tutors — one-on-one classes, flexible timings, and a caring approach.</h1>
+      <p>We help kids and adults read with proper Tajweed, memorize the Quran, and understand Tafseer & Islamic Studies — from the comfort of home.</p>
+      <div class="cta">
+        <a href="https://wa.me/923026924340" class="btn btn-primary" target="_blank" rel="noopener">
+          <!-- WhatsApp icon -->
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A10 10 0 0 0 3.2 17.9L2 22l4.3-1.1A10 10 0 1 0 20.5 3.5Zm-8.4 16.2a8.4 8.4 0 1 1 0-16.8 8.4 8.4 0 0 1 0 16.8Zm4.9-6.3c-.3-.1-1.6-.8-1.8-.9s-.4-.1-.6.1c-.2.3-.7.9-.9 1-.2.1-.3.1-.6 0s-1.2-.4-2.3-1.4a8.6 8.6 0 0 1-1.6-2c-.2-.4 0-.6.1-.7l.4-.5c.1-.1.2-.3.2-.5 0-.1 0-.3 0-.4 0-.2-.6-1.5-.8-2 0-.5-.4-.4-.6-.4h-.5c-.1 0-.4.1-.6.3-.2.2-.8.8-.8 1.9 0 1 .8 2 1 2.3.1.2 1.6 2.6 3.9 3.7 2.3 1.1 2.3.7 2.7.7.4 0 1.4-.6 1.6-1.2.2-.6.2-1.1.1-1.2 0 0-.2-.1-.4-.2Z"/></svg>
+          WhatsApp
+        </a>
+        <a href="mailto:oqacademy069@gmail.com?subject=Admission%20Inquiry%20-%20Ayat-ul-Quran%20Online%20Academy" class="btn btn-outline">
+          <!-- Mail icon -->
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 6.5A2.5 2.5 0 0 1 4.5 4h15A2.5 2.5 0 0 1 22 6.5v11A2.5 2.5 0 0 1 19.5 20h-15A2.5 2.5 0 0 1 2 17.5v-11Zm2.5-.5a.5.5 0 0 0-.5.5v.3l8 4.7 8-4.7V6.5a.5.5 0 0 0-.5-.5h-15Zm15.5 3.6-7.5 4.4a1 1 0 0 1-1 0L4 9.6v7.9c0 .3.2.5.5.5h15c.3 0 .5-.2.5-.5V9.6Z"/></svg>
+          Email us
+        </a>
+      </div>
+    </div>
+    <div class="reveal">
+      <!-- Clean hero illustration (inline SVG) -->
+      <svg viewBox="0 0 880 640" role="img" aria-label="Quran learning illustration">
+        <defs>
+          <linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#e6fff6"/><stop offset="1" stop-color="#fff"/></linearGradient>
+          <linearGradient id="g2" x1="0" x2="1"><stop offset="0" stop-color="#0e7a57"/><stop offset="1" stop-color="#0b5f45"/></linearGradient>
+        </defs>
+        <rect width="880" height="640" fill="url(#g1)"/>
+        <g transform="translate(120 120)">
+          <rect x="0" y="40" rx="18" ry="18" width="560" height="360" fill="#fff" stroke="#e5e7eb"/>
+          <rect x="24" y="64" width="512" height="18" rx="9" fill="#e2e8f0"/>
+          <rect x="24" y="100" width="180" height="16" rx="8" fill="#cbd5e1"/>
+          <rect x="24" y="130" width="420" height="12" rx="6" fill="#e2e8f0"/>
+          <rect x="24" y="154" width="420" height="12" rx="6" fill="#e2e8f0"/>
+          <!-- open book -->
+          <g transform="translate(180 190)">
+            <path d="M0 0c60-28 120-28 180 0v120c-60-28-120-28-180 0Z" fill="url(#g2)" opacity=".12"/>
+            <path d="M0 0c60-28 120-28 180 0" stroke="#0e7a57" stroke-width="3" fill="none"/>
+            <path d="M90 -8v140" stroke="#0e7a57" stroke-width="2"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="container reveal">
+    <h2>About Ayat-ul-Quran</h2>
+    <p class="muted">We provide one-to-one Quran classes with expert male & female tutors. Learn Tajweed, Nazra, Hifz, Tafseer, Arabic & Islamic Studies. Classes available worldwide with flexible schedules.</p>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section id="courses" class="section">
+  <div class="container">
+    <div class="reveal">
+      <h2>Our Courses</h2>
+      <p class="muted">Structured curriculum, progress tracking, and gentle mentorship for every age.</p>
+    </div>
+    <div class="grid grid-3" style="margin-top:14px">
+      <article class="card reveal"><div class="chip"><span class="tick">✓</span> Tajweed (Beginner → Advanced)</div><p style="margin:10px 0" class="muted">Correct Makharij, rules practice, and daily recitation plan.</p></article>
+      <article class="card reveal"><div class="chip"><span class="tick">✓</span> Hifz Program</div><p style="margin:10px 0" class="muted">Personalized memorization schedule with revision cycles.</p></article>
+      <article class="card reveal"><div class="chip"><span class="tick">✓</span> Nazra (Reading)</div><p style="margin:10px 0" class="muted">Step-by-step Qaida to fluent Quran reading.</p></article>
+      <article class="card reveal"><div class="chip"><span class="tick">✓</span> Tafseer & Basics</div><p style="margin:10px 0" class="muted">Understand meanings and daily Islamic etiquettes.</p></article>
+      <article class="card reveal"><div class="chip"><span class="tick">✓</span> Arabic Language</div><p style="margin:10px 0" class="muted">Essential grammar & vocabulary for Quranic Arabic.</p></article>
+      <article class="card reveal"><div class="chip"><span class="tick">✓</span> Kids Special</div><p style="margin:10px 0" class="muted">Fun, patient & engaging lessons for children.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why" class="section">
+  <div class="container">
+    <div class="grid grid-3">
+      <div class="card reveal">
+        <h3>Certified Tutors</h3>
+        <p class="muted">Experienced Qaris & Alimas with proven teaching methods.</p>
+      </div>
+      <div class="card reveal">
+        <h3>One-on-One Classes</h3>
+        <p class="muted">Personalized attention and tailored pace for each student.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Flexible Timings</h3>
+        <p class="muted">Schedule that fits your routine, worldwide time zones.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Progress Reports</h3>
+        <p class="muted">Monthly feedback & assessments to keep you on track.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Secure & Respectful</h3>
+        <p class="muted">Safe learning environment with Islamic values.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Free Trial</h3>
+        <p class="muted">Try a class before enrolling—no obligation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section">
+  <div class="container reveal">
+    <h2>FAQs</h2>
+    <div class="grid grid-2" style="margin-top:10px">
+      <details><summary>How do I start?</summary><p class="muted">Click WhatsApp or Email and tell us which course you need. We’ll arrange a free trial and set your schedule.</p></details>
+      <details><summary>What do I need?</summary><p class="muted">A phone or laptop with internet and a quiet place to attend class.</p></details>
+      <details><summary>Are there female tutors?</summary><p class="muted">Yes, female teachers are available for sisters and kids.</p></details>
+      <details><summary>Payment options?</summary><p class="muted">Localized and international options; fees depend on course load and region.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="reveal">
+      <h2>Contact Us</h2>
+      <p class="muted">Reach us via WhatsApp or Email, or send a quick message using the form.</p>
+    </div>
+
+    <div class="contact-wrap" style="margin-top:14px">
+      <div class="card reveal">
+        <h3 style="margin-top:0">Direct Contacts</h3>
+        <div class="contact-links" style="margin:12px 0">
+          <a class="btn btn-primary" href="https://wa.me/923026924340" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A10 10 0 0 0 3.2 17.9L2 22l4.3-1.1A10 10 0 1 0 20.5 3.5Z"/></svg>
+            +92 302 6924340
+          </a>
+          <a class="btn btn-outline" href="mailto:oqacademy069@gmail.com?subject=Admission%20Inquiry%20-%20Ayat-ul-Quran" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 6.5A2.5 2.5 0 0 1 4.5 4h15A2.5 2.5 0 0 1 22 6.5v11A2.5 2.5 0 0 1 19.5 20h-15A2.5 2.5 0 0 1 2 17.5v-11Z"/></svg>
+            oqacademy069@gmail.com
+          </a>
+        </div>
+        <ul style="padding-left:18px" class="muted">
+          <li>Response within 24 hours</li>
+          <li>Free trial available</li>
+        </ul>
+      </div>
+
+      <div class="card reveal">
+        <h3 style="margin-top:0">Quick Message</h3>
+        <form id="contactForm" onsubmit="return sendMailto(event)">
+          <input class="input" type="text" id="name" placeholder="Your Name" required/>
+          <input class="input" type="email" id="email" placeholder="Your Email" required/>
+          <textarea class="input" id="message" placeholder="Your Message" required></textarea>
+          <div class="contact-actions">
+            <button class="btn btn-primary" type="submit">
+              <!-- paper plane -->
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="m2 11 19-8-8 19-2-7-7-4Z"/></svg>
+              Send
+            </button>
+            <button class="btn btn-outline" type="reset">Reset</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FLOATING WHATSAPP -->
+<a class="float-wa" href="https://wa.me/923026924340" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A10 10 0 0 0 3.2 17.9L2 22l4.3-1.1A10 10 0 1 0 20.5 3.5Z"/></svg>
+  Chat on WhatsApp
+</a>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container footer-inner">
+    <div class="foot-mini">
+      <div class="info-item">
+        <span class="logo-badge" aria-hidden="true" style="width:28px;height:28px;border-radius:8px"></span>
+        <strong>Ayat-ul-Quran Online Academy</strong>
+      </div>
+      <div class="small">&copy; 2025 — All Rights Reserved</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }
+    });
+  },{threshold:.15});
+  revealEls.forEach(el=>io.observe(el));
+
+  // mailto submit
+  function sendMailto(e){
+    e.preventDefault();
+    const n = document.getElementById('name').value.trim();
+    const m = document.getElementById('message').value.trim();
+    const from = document.getElementById('email').value.trim();
+    const subject = encodeURIComponent(`Website Inquiry from ${n}`);
+    const body = encodeURIComponent(`Name: ${n}\nEmail: ${from}\n\nMessage:\n${m}`);
+    const mail = `mailto:oqacademy069@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = mail;
+    return false;
+  }
+</script>
+
+</body>
+</html>
